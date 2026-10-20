@@ -1,0 +1,38 @@
+@mixin breakpoint($point) {
+  @if $point ==mob {
+    @media screen and (min-width: 428px) {
+      @content;
+    }
+  }
+
+  @if $point ==tab {
+    @media screen and (min-width: 577px) {
+      @content;
+    }
+  }
+
+  @if $point ==tab-aside {
+    @media screen and (min-width: 765px) and (max-width: 891px) {
+      @content;
+    }
+  }
+
+  @if $point ==tab-header {
+    @media screen and (min-width: 640px) and (max-width: 891px) {
+      @content;
+    }
+  }
+
+  @if $point ==des {
+    @media screen and (min-width: 892px) {
+      @content;
+    }
+  }
+}
+@mixin min-device-pixel() {
+  @media screen and (min-device-pixel-ratio: 2),
+    screen and (min-resolution: 192dpi),
+    screen and (min-resolution: 2dppx) {
+    @content;
+  }
+}

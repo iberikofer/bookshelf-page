@@ -1,0 +1,97 @@
+@font-face {
+  font-family: 'DMSans-400italic';
+  src: local('Roboto'),
+    url('../fonts/dmsans-italic-webfont.woff2') format('woff2'),
+    url('../fonts/dmsans-italic-webfont.woff') format('woff');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'DMSans-400';
+  src: local('Roboto'), url('../fonts/dmsans-regular.woff2') format('woff2'),
+    url('../fonts/dmsans-regular.woff') format('woff');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'DMSans-500';
+  src: local('Roboto'), url('../fonts/dmsans-medium.woff2') format('woff2'),
+    url('../fonts/dmsans-medium.woff') format('woff');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'DMSans-700';
+  src: local('Roboto'), url('../fonts/dmsans-bold.woff2') format('woff2'),
+    url('../fonts/dmsans-bold.woff') format('woff');
+  font-display: swap;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: 'DMSans-400';
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.04em;
+  color: $black;
+  position: relative;
+  background-color: $background;
+  transition: background $time $time-distribution;
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 12px;
+    background-color: #aaa7a7;
+    &:hover {
+      background-color: #8f8f8f;
+    }
+  }
+  &.no-scroll-body-js {
+    overflow: hidden;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+fieldset {
+  margin: 0;
+  padding: 0;
+}
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+button {
+  margin: 0;
+  padding: 0;
+}
+svg {
+  display: block;
+}
+.container {
+  margin: 0 auto;
+  padding: 0 20px;
+  @include breakpoint(tab) {
+    padding: 0 32px;
+  }
+  @include breakpoint(des) {
+    padding: 0 24px;
+    max-width: 1440px;
+  }
+}
+
+header {
+  padding-bottom: 20px;
+}

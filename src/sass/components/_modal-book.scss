@@ -1,0 +1,423 @@
+.backdrop {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(17, 17, 17, 0.4);
+  z-index: 999;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: scale(1.1);
+  transition: opacity $time $time-distribution,
+    visibility $time $time-distribution, transform $time $time-distribution;
+  &.backdrop-display-block-js {
+    display: block;
+  }
+}
+
+.backdrop.backdrop-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+.modal-window {
+  color: $black;
+  position: absolute;
+  width: 285px;
+  top: 50%;
+  left: 50%;
+  padding: 40px 24px;
+  max-height: 85vh;
+  background: $white;
+  border: 4px solid $black;
+  border-radius: 18px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  transform: translate(-50%, -50%);
+  transition-duration: $time;
+  transition-timing-function: $time-distribution;
+  @media screen and (min-width: 375px) {
+    width: 335px;
+  }
+  @media screen and (min-width: 680px) {
+    width: 579px;
+    padding: 40px;
+  }
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 12px;
+    background-color: #aaa7a7;
+    &:hover {
+      background-color: #8f8f8f;
+    }
+  }
+}
+
+.close-icon-button {
+  cursor: pointer;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: fill 1000ms $time-distribution,
+    transform 1000ms $time-distribution;
+
+  svg {
+    fill: $black;
+  }
+  &:hover,
+  &:focus {
+    transform: rotate(360deg);
+    > svg {
+      fill: $blue;
+    }
+  }
+  @include breakpoint(tab) {
+    width: 15px;
+    height: 15px;
+    top: 24px;
+    right: 24px;
+  }
+}
+
+.close-icon {
+  width: 12px;
+  height: 12px;
+  transition-duration: $time;
+  transition-timing-function: $time-distribution;
+  @include breakpoint(tab) {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+.modal-window-content-align {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 40px;
+  @media screen and (min-width: 680px) {
+    flex-direction: row;
+    gap: 24px;
+  }
+}
+
+.book-content-align {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  @media screen and (min-width: 680px) {
+    width: 260px;
+  }
+}
+
+.image-container {
+  width: 232px;
+  height: 350px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media screen and (min-width: 375px) {
+    width: 100%;
+    height: 408px;
+  }
+  @media screen and (min-width: 680px) {
+    width: 192px;
+    height: 281px;
+  }
+}
+
+.book-image {
+  width: 232px;
+  height: 350px;
+  border-radius: 8px;
+  @media screen and (min-width: 375px) {
+    width: 287px;
+    height: 408px;
+  }
+  @media screen and (min-width: 680px) {
+    width: 192px;
+    height: 281px;
+  }
+}
+
+.book-name {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.12;
+  letter-spacing: -0.04em;
+  margin-bottom: 4px;
+  @include breakpoint(tab) {
+    font-size: 24px;
+    line-height: 1.17;
+    margin-bottom: 8px;
+    font-size: 24px;
+    line-height: 1.17;
+  }
+}
+
+.book-author {
+  font-style: italic;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: -0.04em;
+  color: $almost-gray;
+  margin-bottom: 18px;
+  @include breakpoint(tab) {
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 1.29;
+  }
+}
+
+.book-description {
+  font-family: 'DMSans-400';
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.04em;
+  margin-bottom: 14px;
+  @include breakpoint(tab) {
+    margin-bottom: 20px;
+  }
+}
+
+.logo-align {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.logo {
+  filter: grayscale(1);
+  margin: 0 0;
+  transition: transform $time $time-distribution,
+    filter $time $time-distribution;
+}
+
+.logo:hover,
+.logo:focus {
+  filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.15)) grayscale(1);
+  transform: translateY(-4px);
+}
+
+.add-book-button {
+  cursor: pointer;
+  display: block;
+  padding: 14px 0px;
+  width: 100%;
+  border: 2px solid $blue;
+  border-radius: 40px;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.33;
+  background-color: $white;
+  transition-duration: $time;
+  transition-timing-function: $time-distribution;
+  @include breakpoint(tab) {
+    padding: 20px 0px;
+    font-size: 18px;
+  }
+}
+
+.add-book-button:hover {
+  background: $blue;
+  color: $white;
+}
+
+.add-book-button:focus {
+  box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.15);
+  background: $blue;
+  color: $white;
+}
+
+.add-book-button-none {
+  display: none;
+}
+
+.remove-book-container {
+  display: none;
+}
+
+@keyframes congratulationsFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.remove-book-container-visible {
+  display: flex;
+  flex-direction: column;
+
+  .remove-book-text {
+    animation: congratulationsFadeIn 0.35s cubic-bezier(0.34, 1.25, 0.64, 1) both;
+  }
+}
+
+.colored-modal-border {
+  border-color: $blue !important;
+  transition: border-color $time $time-distribution;
+}
+
+// STRETCH / SHRINK ANIMATIONS FOR MODAL WINDOW
+@keyframes modalStretch {
+  0% {
+    transform: translate(-50%, -50%) scale(1, 0.95);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.008, 1.025);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1, 1);
+  }
+}
+
+@keyframes modalShrink {
+  0% {
+    transform: translate(-50%, -50%) scale(1, 1.035);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(0.992, 0.975);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1, 1);
+  }
+}
+
+.modal-window.modal-stretch {
+  animation: modalStretch 0.35s cubic-bezier(0.34, 1.25, 0.64, 1) both;
+}
+
+.modal-window.modal-shrink {
+  animation: modalShrink 0.35s cubic-bezier(0.34, 1.25, 0.64, 1) both;
+}
+
+.remove-book-button {
+  cursor: pointer;
+  display: block;
+  padding: 14px 0px;
+  width: 100%;
+  border: 2px solid $blue;
+  border-radius: 40px;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.33;
+  background-color: $white;
+  margin-bottom: 8px;
+  transition-duration: $time;
+  transition-timing-function: $time-distribution;
+  @include breakpoint(tab) {
+    padding: 20px 0px;
+    font-size: 18px;
+  }
+}
+
+.remove-book-button:hover {
+  background: $blue;
+  color: $white;
+}
+
+.remove-book-button:focus {
+  box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.15);
+  background: $blue;
+  color: $white;
+}
+
+.remove-book-text {
+  display: block;
+  font-size: 10px;
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+  color: rgba(17, 17, 17, 0.5);
+  text-align: center;
+  margin: 0 auto;
+  max-width: 242px;
+  @include breakpoint(tab) {
+    max-width: 324px;
+    font-size: 12px;
+    line-height: 1.17;
+  }
+}
+
+// DARK MODE STYLES
+
+.dark-mode .modal-window {
+  border: 2px solid $white;
+  background: $gray;
+  color: $white;
+  > .close-icon-button {
+    &:hover,
+    &:focus {
+      > .close-icon {
+        fill: $blue;
+      }
+    }
+    .close-icon {
+      fill: $white;
+    }
+  }
+  > .modal-window-content-align {
+    > .book-content-align {
+      > .logo-align {
+        > a {
+          .amazon-logo {
+            filter: grayscale(1) brightness(1000%);
+            &:hover,
+            &:focus {
+              filter: grayscale(1) brightness(1000%);
+            }
+          }
+        }
+      }
+    }
+  }
+  .add-book-button {
+    color: $white;
+    background-color: $gray;
+    &:hover,
+    &:focus {
+      background-color: $blue;
+    }
+  }
+  > .remove-book-container {
+    .remove-book-button {
+      color: $white;
+      background-color: $gray;
+      &:hover,
+      &:focus {
+        background-color: $blue;
+      }
+    }
+    .remove-book-text {
+      color: rgba(255, 255, 255, 0.5);
+    }
+  }
+}
