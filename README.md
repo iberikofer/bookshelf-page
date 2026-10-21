@@ -1,4 +1,4 @@
-﻿# 📚 Bookshelf - Online Book Catalog & Reading List
+# 📚 Bookshelf - Online Book Catalog & Reading List
 
 > **NOTE:** This repository is an active, fully functional clone and maintenance fork of the original team graduation project [project-new_skill](https://github.com/lezver/project-new_skill), where the original live deployment ceased functioning due to unhandled API changes. This version resolves the infinite loading spinner, fixes modal window interactions, caches books for instant opening, and restores live GitHub Pages functionality.
 
